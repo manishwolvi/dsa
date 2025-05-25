@@ -1,0 +1,54 @@
+package com.test;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		System.out.println("Hello");
+		int[] arr= {-1,0}; //target 9
+		int[] sumindexes= {0,0};
+		sumindexes=twoSum(arr,-1);
+		printArr(sumindexes);
+	}
+	
+	public static int[] twoSum(int[] numbers, int target) {
+        int n=numbers.length-1;
+        int[] sumindexes= {0,0};
+        
+        int i=0;
+        int j=n;
+        
+       while(i<j)
+        {
+    	  //System.out.println(numbers[j]);
+        	if(numbers[i]+numbers[j]==target)
+        	{
+        		sumindexes[0]=i+1;
+        		sumindexes[1]=j+1;
+        		break;
+        	}
+        	if (numbers[i]+numbers[j]>target)
+        		j--;
+        	else
+        		i++;
+        }
+        
+        
+        return sumindexes;
+    }
+	
+	public static void printArr(int[] arr)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.print(i+":"+arr[i]+",");
+			
+		}
+		System.out.println("===");
+	}
+}
