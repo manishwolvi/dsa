@@ -1,0 +1,34 @@
+class Solution {
+    public boolean validWordAbbreviation(String word, String abbr) {
+        int i=0,j=0;
+		int num=0;
+
+        if(abbr.length()>word.length())
+			return false;
+
+        if(word.length()==1 && abbr.equals("1"))
+			return true;
+		
+		while (i<word.length() && j < abbr.length())
+		{		
+			if (word.charAt(i)==abbr.charAt(j))
+			{
+				i++;
+				j++;
+				continue;
+			} 
+			if (abbr.charAt(j) == '0' || !Character.isDigit(abbr.charAt(j))) {
+                return false;
+            }
+			
+			num=0;
+			while (j < abbr.length() && abbr.charAt(j)>='0' && abbr.charAt(j)<='9')
+			{
+				num = 10 * num + (abbr.charAt(j) - '0');			
+				j++;				
+			} 
+			i=i+num;
+		}	
+		return i == word.length() && j == abbr.length();
+    }
+}
