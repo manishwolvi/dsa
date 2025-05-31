@@ -1,0 +1,47 @@
+import java.util.Arrays;
+import java.util.SortedMap;
+
+public class Solution {
+
+
+	/**5.	Given an array of integers, you have to find three numbers such that the sum of two elements equals the third element.
+		Input : {5, 32, 1, 7, 10, 50, 19, 21, 2}
+		Output : 21, 2, 19
+
+
+
+
+	 **/
+	public static void main(String[] args) {
+
+		int[] arr = {4,5,9,14,18};
+		int x=110;
+		//int[] arr = {400};
+		findTriplet(arr);
+
+	}
+
+	public static void findTriplet(int arr[])  
+	{	
+		Arrays.sort(arr);
+		
+		for(int i=arr.length-1;i>=0;i--)
+		{
+			int l=0;
+			int r=i-1;
+			while(l<r)
+			{
+				if(arr[l]+arr[r]==arr[i])
+				{
+					System.out.println(arr[l]+","+arr[r]+","+arr[i]);
+					break;
+				}
+				else if (arr[l]+arr[r]>arr[i])
+					r--;
+				else 
+					l++;
+			}
+		}
+	}
+
+}
