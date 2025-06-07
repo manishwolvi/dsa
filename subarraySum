@@ -1,0 +1,56 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedMap;
+
+public class Solution {
+
+
+
+	public static void main(String[] args) {
+
+		int[] arr = {1,2,1,2,1};
+		int x=110;
+		//int[] arr = {400};
+
+		System.out.println(subarraySum(arr,3));
+
+
+
+	}
+
+	 public static int subarraySum(int[] arr, int k) {
+	     
+		 int count=0;
+		 int cursum=0;
+		 int s=0, e=0;
+		 
+		 Map<Integer,Integer> map = new HashMap<>();
+		 
+		 for(int i=0; i<arr.length;i++)
+		 {
+			 cursum=cursum+arr[i];
+			 
+			 if(cursum==k)
+			 {
+				 e=i;
+				 System.out.println(s+","+e);
+				 count++;
+			 }
+			 
+			 if(map.containsKey(cursum-k))
+			 {
+				 s=map.get(cursum-k)+1;
+				 e=i;
+				 count++;
+				 System.out.println(s+","+e);
+			 }
+			 
+				 map.put(cursum, i);
+			 
+		 }
+		 
+		 return count;
+	 }
+	
+}
