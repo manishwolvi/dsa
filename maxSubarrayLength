@@ -1,0 +1,72 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedMap;
+
+public class Solution {
+
+
+
+	public static void main(String[] args) {
+
+		
+		int[] arr = {5,3,10,12,23,17,44,68,77};
+		
+		System.out.println(maxSubarrayLength(arr));
+
+
+
+	}
+
+	public static int maxSubarrayLength(int arr[])
+    {
+		int len=0;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]%2==0)
+				arr[i]=-1;
+			else
+				arr[i]=1;
+		}
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		int cur_sum=0;
+		int s=0, e=-1;
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			cur_sum=cur_sum+arr[i];
+			
+			if(cur_sum == 0)
+			{
+				len=i+1;
+				e=i;
+				
+			}
+			
+			if(map.containsKey(cur_sum))
+			{
+				s=map.get(cur_sum);
+				
+				if(len < i-s)
+				{
+					len=i-s;
+					e=i;
+				}
+			}
+			else
+				map.put(cur_sum, i);
+		}
+		
+		if (e == -1) {
+            System.out.println(
+                "No subarray with given sum exists");
+        } else
+        	System.out.println(e-len+1+","+e);
+        
+
+		
+		return len;
+    }
+	
+}
