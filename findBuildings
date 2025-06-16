@@ -1,0 +1,28 @@
+class Solution {
+    public int[] findBuildings(int[] heights) {
+        List<Integer> builds = new ArrayList<>();
+		
+		builds.add(heights.length-1);
+		
+		int maxH=heights[heights.length-1];
+		
+		for (int i=heights.length-2;i>=0;i--)
+		{
+			if(heights[i]>maxH)
+			{
+				builds.add(i);
+				
+				maxH=heights[i];
+			}
+		}
+		
+		Collections.reverse(builds);
+		int[] ans = new int[builds.size()];
+		for(int i=0;i<ans.length;i++)
+		{
+			ans[i]=builds.get(i);
+		}
+		
+		return ans;
+    }
+}
