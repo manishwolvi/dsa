@@ -1,0 +1,17 @@
+public static int count(int[] arr, int l, int r)
+	{
+		
+		if(arr.length==0 || arr==null)
+			return 0;
+		
+		if(arr[r]==0)
+			return 0;
+		
+		if(arr[l]==1)
+			return r-l+1;
+		
+		int mid = l + (r-l)/2;
+		
+		
+		return count(arr,l,mid)+count(arr,mid+1,r);
+	}
