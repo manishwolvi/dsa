@@ -1,0 +1,30 @@
+public int inorderTraversal(TreeNode root, int p) {
+        List<Integer> res = new ArrayList<Integer>();
+        helper(root, res);
+        
+        boolean pFound=false;
+        
+        for(int i=0;i<res.size();i++)
+        {
+        	if(pFound)
+        		return res.get(i);
+        	if(res.get(i)==p)
+        	{
+        		pFound=true;
+        	}
+        }
+        
+        return -1;
+    }
+
+    public static void helper(TreeNode root, List<Integer> res)
+	{
+		if (root==null)
+            return;
+		
+		 
+		 helper(root.left,res);
+		 res.add(root.val);
+		 helper(root.right,res);
+		
+	}
