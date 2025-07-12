@@ -1,0 +1,21 @@
+static int sum=0;
+	public List<Integer> inorderTraversalFindSum(TreeNode root, int low, int high) {
+		
+        List<Integer> res = new ArrayList<Integer>();
+        helper(root, res, low, high);
+        System.out.println("Sum is:" + sum);
+        return res;
+    }
+
+    public static void helper(TreeNode root, List<Integer> res,int low,int high)
+	{
+		if (root==null)
+            return;
+		
+		 helper(root.left,res,low,high);
+		 if(root.val >=low && root.val<=high)
+			 sum=sum+root.val;
+		 res.add(root.val);
+		 helper(root.right,res,low,high);
+		
+	}
